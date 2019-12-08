@@ -1,0 +1,107 @@
+//结构体定义
+typedef struct node{
+	int data;
+	struct node*next;
+}node;
+//创建
+node*creat(){
+	node*h;
+	h=(node*)malloc(sizeof(node));
+	scanf("%d",&h->data);
+	h->next=NULL;
+	return h;
+}
+//按输入顺序添加
+node*addtail(node*h,int add){
+	node*p,*s;
+	s=(node*)malloc(sizeof(node));
+	s->data = add;
+	s->next = NULL;
+	p=h;
+	while(p->next !=NULL)
+		p=p->next;
+	p->next =s;
+	return h;
+}
+//删除指定数据
+node *del(node*h,int key){
+	node*p=h;
+	node*s;
+	if(p->data==key)
+		return h->next;
+	while(p->next->data!=key)
+		p=p->next;
+	s=p->next->next;
+	p->next=s;
+	return h;
+}
+//删除最后一个
+node*del_lastone(node*h)
+{
+	node*p,*q;
+	p=h;
+	while(p->next->next!=NULL)
+		p=p->next;
+
+	q=p->next;
+	p->next = NULL;
+	free(q);
+	return h;
+}
+//删除全部
+void del_all(node*h)
+{
+	node*p,*s;
+	p=h;
+	while(p->next!=NULL){
+		s=p->next;
+		free(p);
+		p=s;
+	}
+}
+//指定位置插入指定数据
+node*insert(node*h,int add,int pos){
+	node *p,*s;
+	int i=1;
+	int sum_node=0;
+	p=h;
+	s=((node*)malloc(sizeof(node)));
+	s->data=add;
+	sum_node=count(h);
+	if(pos>sum_node){
+		printf("wrong position\n");
+		return h;
+	}
+	if(1==pos)
+	{
+		s->next = h;
+		return s;
+	}
+	while(i<pos-1)
+	{
+		p=p->next;
+		i++;
+	}
+	s->next = p->next;
+	p->next =s;
+	return h;
+}
+//节点计数
+int count(node*h){
+	node*p;
+	int i=0;
+	p=h;
+	while(p->next!=NULL){
+		i++;
+		p=p->next;
+	}
+	return i;
+}
+//输出
+void output(node*h){
+	node*p=h;
+	while(p!=NULL){
+		printf("%d ",p->data);
+		p=p->next;
+	}
+}
