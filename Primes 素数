@@ -1,0 +1,10 @@
+//巧妙利用return来结束函数
+
+
+int isprime(int x){
+	int i;
+	for(i=2;i<x;i++)
+		if(x%t==0)
+			return 0;
+		return 1;
+}
