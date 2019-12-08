@@ -1,0 +1,23 @@
+//二分查找的基本方法是设置一个查找区间(low,high)
+//用key与中间站mid比较，逐步缩小区间
+
+int find (int a[],int key,int num){
+	int low=0;
+	int high =num-1;
+	int mid;
+	while(low<=high){
+		mid = (low+high)/2;
+		if(key==a[mid])			
+			break;
+		if(key<a[mid])
+			high=mid-1;
+		if(key>a[mid])
+			low=mid+1;	
+	}
+	if(low>high)
+		printf("%d not found\n",key);
+	else
+		printf("%dfound in %d\n",key,mid+1);
+	return 0;
+
+}
