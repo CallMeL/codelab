@@ -1,0 +1,44 @@
+//选择排序：
+找出i～num-1的最大数的数组下标max
+        让i与max对应的数组交换
+
+void sort(int array[],int num)
+{
+	int i,j,temp;
+	int max;
+	for(i=0;i<num;i++){
+		max = i;
+		for(j=i+1;j<num;j++){
+			if(array[max]<array[j])
+				max = j;
+		}
+		temp = array[max];
+		array[max]=array[i];
+		array[i]=temp;
+	}
+}
+
+//冒泡排序：
+比较相邻两个数的大小，按要求交换位置
+每完整下来一轮总会把最值交换到最后或者最前
+void sort(int value[],int n)
+{
+    int i,j,temp;
+    int e=0;//来判断是不是一开始就有顺序，避免重复
+    for (i=n-1;i>=1;i--)
+    {
+        for (j=0;j<i;j++){
+            if (value[j]>value[j+1]){
+                temp = value[j];
+                value[j]=value[j+1];
+                value [j+1]=temp;
+                e++;
+            }
+        }
+        
+        if (e==0)
+            break;
+    }
+
+    
+}
