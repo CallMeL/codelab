@@ -24,6 +24,7 @@ node*addtail(node*h,int add){
 	return h;
 }
 //删除指定数据
+//总是要找到前一个再进行处理
 node *del(node*h,int key){
 	node*p=h;
 	node*s;
@@ -84,6 +85,7 @@ node*insert(node*h,int add,int pos){
 	}
 	s->next = p->next;
 	p->next =s;
+//将s插在了p与p->next之间了
 	return h;
 }
 //节点计数
